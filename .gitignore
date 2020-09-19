@@ -14,7 +14,4 @@
 .vagrant
 
 # Project binaries
-uptime
-disks
-osinfo
-fsinfo
+/bin
