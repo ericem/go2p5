@@ -11,7 +11,7 @@ bin/disks: ./examples/disks/main.go
 bin/nics: ./examples/nics/main.go
 	 GOOS=linux GOARCH=amd64 go build -o bin/nics $<
 
-bin/fsinfo: ./examples/fsinfo/main.go
+bin/fsinfo: ./examples/fsinfo/main.go ./cmds/fsinfo.go
 	 GOOS=linux GOARCH=amd64 go build -o bin/fsinfo $<
 
 bin/hostinfo: ./examples/hostinfo/main.go
