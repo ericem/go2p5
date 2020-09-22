@@ -1,21 +1,24 @@
 .PHONY: all
 
-all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo
+all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo bin/rpms
 
-bin/uptime: ./examples/uptime/main.go
-	 GOOS=linux GOARCH=amd64 go build -o bin/uptime $<
+bin/uptime: ./examples/uptime/main.go ./cmds/uptime.go
+	 GOOS=linux GOARCH=amd64 go build -o $@ $<
 
-bin/disks: ./examples/disks/main.go
-	 GOOS=linux GOARCH=amd64 go build -o bin/disks $<
+bin/disks: ./examples/disks/main.go ./cmds/disks.go
+	 GOOS=linux GOARCH=amd64 go build -o $@ $<
 
-bin/nics: ./examples/nics/main.go
-	 GOOS=linux GOARCH=amd64 go build -o bin/nics $<
+bin/nics: ./examples/nics/main.go ./cmds/net.go
+	 GOOS=linux GOARCH=amd64 go build -o $@ $<
 
 bin/fsinfo: ./examples/fsinfo/main.go ./cmds/fsinfo.go
-	 GOOS=linux GOARCH=amd64 go build -o bin/fsinfo $<
+	 GOOS=linux GOARCH=amd64 go build -o $@ $<
 
-bin/hostinfo: ./examples/hostinfo/main.go
-	 GOOS=linux GOARCH=amd64 go build -o bin/hostinfo $<
+bin/hostinfo: ./examples/hostinfo/main.go ./cmds/host.go
+	 GOOS=linux GOARCH=amd64 go build -o $@ $<
 
-bin/osinfo: ./examples/osinfo/main.go
-	 GOOS=linux GOARCH=amd64 go build -o bin/osinfo $<
+bin/osinfo: ./examples/osinfo/main.go ./cmds/os.go
+	 GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/rpms: ./examples/rpms/main.go ./cmds/rpm.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
