@@ -1,6 +1,6 @@
 .PHONY: all
 
-all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo bin/rpms
+all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo bin/rpms bin/ohey
 
 bin/uptime: ./examples/uptime/main.go ./cmds/uptime.go
 	 GOOS=linux GOARCH=amd64 go build -o $@ $<
@@ -21,4 +21,7 @@ bin/osinfo: ./examples/osinfo/main.go ./cmds/os.go
 	 GOOS=linux GOARCH=amd64 go build -o $@ $<
 
 bin/rpms: ./examples/rpms/main.go ./cmds/rpm.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/ohey: ./examples/ohey/main.go ./node/node.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
