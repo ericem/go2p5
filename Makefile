@@ -1,7 +1,7 @@
 .PHONY: all
 
 all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo \
-	bin/rpms bin/ohey bin/wipedisk bin/partdisk
+	bin/rpms bin/ohey bin/wipedisk bin/partdisk bin/formatxfs bin/wipepart
 
 bin/uptime: ./examples/uptime/main.go ./cmds/uptime.go
 	 GOOS=linux GOARCH=amd64 go build -o $@ $<
@@ -31,4 +31,10 @@ bin/wipedisk: ./examples/wipedisk/main.go ./cmds/disktool.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
 
 bin/partdisk: ./examples/partdisk/main.go ./cmds/disktool.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/formatxfs: ./examples/formatxfs/main.go ./cmds/fstool.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/wipepart: ./examples/wipepart/main.go ./cmds/fstool.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
