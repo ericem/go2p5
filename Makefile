@@ -2,7 +2,7 @@
 
 all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo \
 	bin/rpms bin/ohey bin/wipedisk bin/partdisk bin/formatxfs bin/wipepart \
-	bin/pkginstall bin/pkgremove bin/getfile bin/rmfile bin/users
+	bin/pkginstall bin/pkgremove bin/getfile bin/rmfile bin/users bin/addusertest
 
 bin/uptime: ./examples/uptime/main.go ./cmds/uptime.go
 	 GOOS=linux GOARCH=amd64 go build -o $@ $<
@@ -53,4 +53,7 @@ bin/rmfile: ./examples/rmfile/main.go ./cmds/filetool.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
 
 bin/users: ./examples/users/main.go ./cmds/user.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/addusertest: ./examples/addusertest/main.go ./cmds/usertool.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
