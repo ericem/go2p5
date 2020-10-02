@@ -3,7 +3,7 @@
 all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo \
 	bin/rpms bin/ohey bin/wipedisk bin/partdisk bin/formatxfs bin/wipepart \
 	bin/pkginstall bin/pkgremove bin/getfile bin/rmfile bin/users \
-	bin/addusertest bin/groups
+	bin/addusertest bin/groups bin/addgrouptest
 
 bin/uptime: ./examples/uptime/main.go ./cmds/uptime.go
 	 GOOS=linux GOARCH=amd64 go build -o $@ $<
@@ -60,4 +60,7 @@ bin/addusertest: ./examples/addusertest/main.go ./cmds/usertool.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
 
 bin/groups: ./examples/groups/main.go ./cmds/group.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/addgrouptest: ./examples/addgrouptest/main.go ./cmds/grouptool.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
