@@ -4,7 +4,7 @@ all: bin/uptime bin/disks bin/osinfo bin/fsinfo bin/nics bin/hostinfo \
 	bin/rpms bin/ohey bin/wipedisk bin/partdisk bin/formatxfs bin/wipepart \
 	bin/pkginstall bin/pkgremove bin/getfile bin/rmfile bin/users \
 	bin/addusertest bin/groups bin/addgrouptest bin/sudoertest \
-	bin/nginxstate
+	bin/nginxstate bin/userstate
 
 bin/uptime: ./examples/uptime/main.go ./cmds/uptime.go
 	 GOOS=linux GOARCH=amd64 go build -o $@ $<
@@ -70,4 +70,7 @@ bin/sudoertest: ./examples/sudoertest/main.go ./cmds/sudoers.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
 
 bin/nginxstate: ./examples/nginxstate/main.go ./res/resource.go ./res/package.go ./node/packages.go ./res/command.go
+	GOOS=linux GOARCH=amd64 go build -o $@ $<
+
+bin/userstate: ./examples/userstate/main.go ./res/user.go ./node/users.go ./cmds/userkey.go
 	GOOS=linux GOARCH=amd64 go build -o $@ $<
