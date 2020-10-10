@@ -1,0 +1,74 @@
+version: '3'
+
+tasks:
+  uptime:
+    - go build -v -i -o bin/uptime examples/uptime/main.go
+  disks:
+    - go build -v -i -o bin/disks examples/disks/main.go
+  nics:
+    - go build -v -i -o bin/nics examples/nics/main.go
+  fsinfo:
+    - go build -v -i -o bin/fsinfo examples/fsinfo/main.go
+  hostinfo:
+    - go build -v -i -o bin/hostinfo examples/hostinfo/main.go
+  osinfo:
+    - go build -v -i -o bin/osinfo examples/osinfo/main.go
+  rpms:
+    - go build -v -i -o bin/rpms examples/rpms/main.go
+  ohey:
+    - go build -v -i -o bin/ohey examples/ohey/main.go
+  wipedisk:
+    - go build -v -i -o bin/wipedisk examples/wipedisk/main.go
+  partdisk:
+    - go build -v -i -o bin/partdisk examples/partdisk/main.go
+  formatxfs:
+    - go build -v -i -o bin/formatxfs examples/formatxfs/main.go
+  wipepart:
+    - go build -v -i -o bin/wipepart examples/wipepart/main.go
+  pkginstall:
+    - go build -v -i -o bin/pkginstall examples/pkginstall/main.go
+  pkgremove:
+    - go build -v -i -o bin/pkgremove examples/pkgremove/main.go
+  getfile:
+    - go build -v -i -o bin/getfile examples/getfile/main.go
+  rmfile:
+    - go build -v -i -o bin/rmfile examples/rmfile/main.go
+  users:
+    - go build -v -i -o bin/users examples/users/main.go
+  addusertest:
+    - go build -v -i -o bin/addusertest examples/addusertest/main.go
+  groups:
+    - go build -v -i -o bin/groups examples/groups/main.go
+  addgrouptest:
+    - go build -v -i -o bin/addgrouptest examples/addgrouptest/main.go
+  sudoertest:
+    - go build -v -i -o bin/sudoertest examples/sudoertest/main.go
+  nginxstate:
+    - go build -v -i -o bin/nginxstate examples/nginxstate/main.go
+  userstate:
+    - go build -v -i -o bin/userstate examples/userstate/main.go
+
+
+  build:
+    deps:
+      - uptime
+      - nics
+      - disks
+      - fsinfo
+      - hostinfo
+      - osinfo
+      - rpms
+      - ohey
+      - wipedisk
+      - formatxfs
+      - wipepart
+      - pkginstall
+      - getfile
+      - rmfile
+      - users
+      - addusertest
+      - groups
+      - addgrouptest
+      - sudoertest
+      - nginxstate
+      - userstate
