@@ -1,5 +1,9 @@
 version: '3'
 
+env:
+  GOOS: linux
+  GOARCH: amd64
+
 tasks:
   uptime:
     - go build -v -i -o bin/uptime examples/uptime/main.go
@@ -47,6 +51,8 @@ tasks:
     - go build -v -i -o bin/nginxstate examples/nginxstate/main.go
   userstate:
     - go build -v -i -o bin/userstate examples/userstate/main.go
+  filestate:
+    - go build -v -i -o bin/filestate examples/filestate/main.go
 
 
   build:
@@ -72,3 +78,4 @@ tasks:
       - sudoertest
       - nginxstate
       - userstate
+      - filestate
