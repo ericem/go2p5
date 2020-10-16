@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/7.json"
 
+  config.vm.provision "shell", inline: "yum install -y gdisk"
+
   config.vm.provider "virtualbox" do |vb|
     vb.name = "twofive"
     vb.memory = 1024
