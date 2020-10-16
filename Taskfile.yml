@@ -53,6 +53,8 @@ tasks:
     - go build -v -i -o bin/userstate examples/userstate/main.go
   filestate:
     - go build -v -i -o bin/filestate examples/filestate/main.go
+  datanode-deploy:
+    - go build -v -i -o bin/datanode-deploy cmd/datanode-deploy/main.go
 
 
   build:
@@ -79,3 +81,4 @@ tasks:
       - nginxstate
       - userstate
       - filestate
+      - datanode-deploy
